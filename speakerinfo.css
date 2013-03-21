@@ -1,0 +1,87 @@
+.c-side {
+    min-width: 270px;
+    max-width: 270px;
+}
+
+.c-speaker-tabs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #ddd;
+    border: 1px solid #bbb;
+}
+
+.c-speaker-tabs li {
+    display: inline;
+}
+
+.c-speaker-tabs a {
+    padding: 4px 10px;
+    display: inline-block;
+    font: 13px Arial, sans-serif;
+    text-decoration: none;
+    color: #444;
+    border-right: 1px solid #bbb;
+}
+
+.c-speaker-tabs a:hover, .c-speaker-tabs a.c-active {
+    background: #d0d0d0;
+}
+
+.c-speaker-tab-content {
+    background: #eee;
+    border: 1px solid #bbb;
+    border-top: 0;
+    overflow: auto;
+}
+
+.c-speaker-tab-content div {
+    display: none;
+    padding: 10px;
+    font: 12px Arial, sans-serif;
+}
+
+.c-speaker-tab-content a {
+    color: #555;
+}
+
+.c-speaker-tab-content a:hover {
+    color: #888;
+}
+
+.c-speaker-tab-content img {
+    float: right;
+    margin: 0 0 5px 5px;
+    border: 1px solid #999;
+}
+
+.c-side .c-speaker-tab-content img {
+    float: none;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.c-speaker-tab-content h3 {
+    margin: 0 0 10px;
+    font: 20px Arial, sans-serif;
+    color: #000;
+}
+
+.c-speaker-tab-content h3 small {
+    margin-left: 7px;
+    font-size: 15px;
+    color: #555;
+}
+
+.c-side h3 {
+    text-align: center;
+}
+
+.c-side small {
+    display: block;
+}
+
+.c-speaker-tab-content ul {
+    margin: 0 0 0 20px;
+    padding: 0;
+}
