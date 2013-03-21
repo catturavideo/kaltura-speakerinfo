@@ -139,40 +139,39 @@ SpeakerUI.prototype = {
 
     filesTab: function (tab)
     {
-        var t = this;
+        var t = this,
+            list = $("<ul/>");
 
-        if (!t.config.Files)
-            return t.removeTab(tab);
+        t.api.doRequest({
+            service: "attachment_attachmentasset",
+            action: "list",
+            "filter:entryIdEqual": t.entry,
+        }, function (data) {
+            if (!data || !data.objects || !data.objects.length)
+                return t.removeTab(tab);
 
-        var ids = $.grep(t.config.Files.split(","), function (id) { return id.length > 0; }),
-            list = $("<ul/>"),
-            files;
+            data.objects.sort(function (a, b) {
+                return a.title.localeCompare(b.title);
+            });
 
-        files = $.map(ids, function (id) {
-            return {
-                service: "attachment_attachmentasset",
-                action: "get",
-                attachmentAssetId: id
-            };
-        }).concat($.map(ids, function (id) {
-            return {
-                service: "attachment_attachmentasset",
-                action: "getUrl",
-                id: id
-            };
-        }));
+            t.api.doRequest($.map(data.objects, function (attachment) {
+                return {
+                    service: "attachment_attachmentasset",
+                    action: "getUrl",
+                    id: attachment.id
+                };
+            }), function (urls) {
+                for(var i = 1; i < urls.length; i++)
+                {
+                    list.append($("<a/>", {
+                        text: data.objects[i - 1].title,
+                        href: urls[i],
+                        target: "_blank"
+                    }).wrap("<li/>").parent());
+                }
 
-        t.api.doRequest(files, function (data) {
-            for(var i = 1; i <= ids.length; i++)
-            {
-                list.append($("<a/>", {
-                    text: data[i].title,
-                    href: data[i + ids.length],
-                    target: "_blank"
-                }).wrap("<li/>").parent());
-            }
-
-            list.appendTo(tab.empty());
+                tab.empty().append(list);
+            });
         });
     }
 };
