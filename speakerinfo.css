@@ -85,3 +85,27 @@
     margin: 0 0 0 20px;
     padding: 0;
 }
+
+a.c-speaker-email {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 13px;
+    text-decoration: none;
+    background: #ccc;
+    background: -webkit-linear-gradient(#eee 0%, #bbb 100%);
+    background:    -moz-linear-gradient(#eee 0%, #bbb 100%);
+    background:      -o-linear-gradient(#eee 0%, #bbb 100%);
+    background:         linear-gradient(#eee 0%, #bbb 100%);
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+    border: 1px solid #aaa;
+}
+
+.c-side a.speaker-email {
+    margin-top: 7px;
+}
+
+a.c-speaker-email:hover {
+    color: #000;
+}

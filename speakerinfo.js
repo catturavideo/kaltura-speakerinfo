@@ -9,7 +9,7 @@ var template = [
     '<div class="c-speaker-tab-content">',
         '<div>',
             '<img>',
-            '<h3><small></small></h3>',
+            '<h3><small></small><a class="c-speaker-email">E-mail</a></h3>',
             '<p></p>',
         '</div>',
         '<div>Loading...</div>',
@@ -71,6 +71,7 @@ SpeakerUI.prototype = {
             t.container.addClass("c-side").css("float", "left");
             t.tab_content.parent().height($(t.kdp).height() - t.container.find(".c-speaker-tabs").outerHeight() - 1);
             t.changeTab(0);
+            t.side = true;
             break;
         default:
             $(t.kdp)[pos == "bottom" ? "after" : "before"](t.container.width($(t.kdp).width()));
@@ -132,6 +133,12 @@ SpeakerUI.prototype = {
         //Name
         tab.find("h3").prepend(cfg.Name);
         ifPresent.call(tab.find("h3 small"), cfg.Credentials);
+
+        //Email
+        ifPresent.call(tab.find("a"), cfg.Email, function () {
+            this.attr("href", "mailto:" + cfg.Email);
+            if(!t.side) tab.find("h3").after(this);
+        });
 
         //Bio
         tab.find("p").html(cfg.Biography.replace(/\n/g, "<br>"));
