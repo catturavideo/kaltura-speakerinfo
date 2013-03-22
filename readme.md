@@ -25,8 +25,8 @@ The Cattura platform allows you to upload information about your presenter with 
 
 #### 1.0.1 ####
 
-Bugfix: The KMC would throw errors over file attachments, the old structure was dropped in favor of related assets.
-Feature: Added e-mail speaker button.
+ * Bugfix: The KMC would throw errors over file attachments, the old structure was dropped in favor of related assets.
+ * Feature: Added e-mail speaker button.
 
 #### 1.0.0 ####
 
