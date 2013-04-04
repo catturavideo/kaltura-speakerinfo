@@ -3,12 +3,17 @@
     max-width: 270px;
 }
 
+.c-speaker-container {
+    text-align: left;
+}
+
 .c-speaker-tabs {
     margin: 0;
     padding: 0;
     list-style: none;
     background: #ddd;
     border: 1px solid #bbb;
+    line-height: 100%;
 }
 
 .c-speaker-tabs li {
