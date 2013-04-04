@@ -8,7 +8,7 @@ The Cattura platform allows you to upload information about your presenter with 
 
 2.  Copy the line below and paste into the "plug-in line" field in the "Additional parameters and plugins" section of features and click "Go".
 
-	speakerInfo.plugin=true&speakerInfo.path=/content/uiconf/ps/kaltura/kdp/v3.6.9/plugins/facadePlugin.swf&speakerInfo.relativeTo=video&speakerInfo.position=before&speakerInfo.includeInLayout=false&speakerInfo.widgetPosition=top&speakerInfo.onPageJs1=http://cf.cdn.catturavideo.com/assets/js/speakerinfo1.0.1.min.js&speakerInfo.onPageCss1=http://cf.cdn.catturavideo.com/assets/js/speakerinfo1.0.2.min.css&speakerInfo.requiresJQuery=true
+	speakerInfo.plugin=true&speakerInfo.path=/content/uiconf/ps/kaltura/kdp/v3.6.9/plugins/facadePlugin.swf&speakerInfo.relativeTo=video&speakerInfo.position=before&speakerInfo.includeInLayout=false&speakerInfo.widgetPosition=top&speakerInfo.onPageJs1=http://cf.cdn.catturavideo.com/assets/js/speakerinfo1.0.2.min.js&speakerInfo.onPageCss1=http://cf.cdn.catturavideo.com/assets/js/speakerinfo1.0.2.min.css&speakerInfo.requiresJQuery=true
 
 	![Step 2](http://i.imgur.com/8rqIPVi.png)
 
@@ -26,6 +26,7 @@ The Cattura platform allows you to upload information about your presenter with 
 #### 1.0.2 ####
 
  * Bugfix: Minor css issues.
+ * Bugfix: Kaltura returns non-array on multipart request with 1 request.
 
 #### 1.0.1 ####
 

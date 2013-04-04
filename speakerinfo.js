@@ -168,7 +168,10 @@ SpeakerUI.prototype = {
                     id: attachment.id
                 };
             }), function (urls) {
-                for(var i = 1; i < urls.length; i++)
+                if (!$.isArray(urls))
+                    urls = [0, urls];
+
+                for (var i = 1; i < urls.length; i++)
                 {
                     list.append($("<a/>", {
                         text: data.objects[i - 1].title,
