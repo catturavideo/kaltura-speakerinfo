@@ -4,5 +4,13 @@
 		{
 			"path": "."
 		}
+	],
+
+	"build_systems":
+	[
+		{
+			"name": "JSHint",
+			"cmd": ["jshint", "$file"]
+		}
 	]
 }
