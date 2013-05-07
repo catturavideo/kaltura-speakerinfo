@@ -67,6 +67,7 @@
 }
 
 .c-speaker-tab-content h3 {
+    display: inline-block;
     margin: 0 0 10px;
     font: 20px Arial, sans-serif;
     color: #000;
@@ -79,6 +80,7 @@
 }
 
 .c-side h3 {
+    display: block;
     text-align: center;
 }
 
@@ -93,8 +95,10 @@
 
 a.c-speaker-email {
     display: inline-block;
+    margin-left: 10px;
     padding: 3px 10px;
     font-size: 13px;
+    text-align: center;
     text-decoration: none;
     background: #ccc;
     background: -webkit-linear-gradient(#eee 0%, #bbb 100%);
@@ -107,8 +111,10 @@ a.c-speaker-email {
     border: 1px solid #aaa;
 }
 
-.c-side a.speaker-email {
-    margin-top: 7px;
+.c-side a.c-speaker-email {
+    display: block;
+    width: 45px;
+    margin: 0 auto 0;
 }
 
 a.c-speaker-email:hover {
