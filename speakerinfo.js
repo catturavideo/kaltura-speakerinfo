@@ -91,8 +91,14 @@ SpeakerUI.prototype = {
         });
 
         //Special case for links.
-        ret["Links"] = doc.find("Links").map(function () {
-            return $(this).text();
+        ret.Links = doc.find("Links").map(function () {
+            var link = $(this).text(),
+
+            valid = $.grep(["ftp://", "http://", "https://"], function (protocol) {
+                return link.indexOf(protocol) === 0;
+            }).length > 0;
+
+            return valid ? link : "http://" + link;
         }).get();
 
         return ret;
@@ -201,14 +207,13 @@ SpeakerUI.prototype = {
         if (!t.config.Links.length)
             t.removeTab(tab);
 
-        for (var i = 0, link; link = t.config.Links[i]; i++)
-        {
+        $.each(t.config.Links, function (i, link) {
             list.append($("<a/>", {
                 text: link,
                 href: link,
                 target: "_blank"
             }).wrap("<li/>").parent());
-        }
+        });
 
         tab.empty().append(list);
     }
