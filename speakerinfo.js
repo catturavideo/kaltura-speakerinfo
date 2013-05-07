@@ -5,6 +5,7 @@ var template = [
     '<ul class="c-speaker-tabs">',
         '<li><a href="#">Speaker</a></li>',
         '<li><a href="#">Files</a></li>',
+        '<li><a href="#">Links</a></li>',
     '</ul>',
     '<div class="c-speaker-tab-content">',
         '<div>',
@@ -13,6 +14,7 @@ var template = [
             '<p></p>',
         '</div>',
         '<div>Loading...</div>',
+        '<div></div>',
     '</div>',
 '</div>'
 ].join('');
@@ -49,7 +51,8 @@ function SpeakerUI(kdp, api, entry, xml)
 
     $.each([
         t.speakerTab,
-        t.filesTab
+        t.filesTab,
+        t.linksTab
     ], function (i, fn) {
         fn.call(t, t.tab_content.eq(i));
     });
@@ -83,9 +86,14 @@ SpeakerUI.prototype = {
         var ret = {},
             doc = $($.parseXML(xml));
 
-        $.each(["Name", "Email", "Biography", "Credentials", "Image", "Links", "Rss", "Files"], function (_, field) {
+        $.each(["Name", "Email", "Biography", "Credentials", "Image"], function (_, field) {
             ret[field] = doc.find(field).text();
         });
+
+        //Special case for links.
+        ret["Links"] = doc.find("Links").map(function () {
+            return $(this).text();
+        }).get();
 
         return ret;
     },
@@ -183,6 +191,26 @@ SpeakerUI.prototype = {
                 tab.empty().append(list);
             });
         });
+    },
+
+    linksTab: function (tab)
+    {
+        var t = this,
+            list = $("<ul/>");
+
+        if (!t.config.Links.length)
+            t.removeTab(tab);
+
+        for (var i = 0, link; link = t.config.Links[i]; i++)
+        {
+            list.append($("<a/>", {
+                text: link,
+                href: link,
+                target: "_blank"
+            }).wrap("<li/>").parent());
+        }
+
+        tab.empty().append(list);
     }
 };
 
