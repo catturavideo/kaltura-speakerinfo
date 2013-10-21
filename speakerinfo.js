@@ -1,4 +1,4 @@
-(function (kWidget) {
+(function (kWidget, $) {
 
 var template = [
 '<div class="c-speaker-container">',
@@ -239,4 +239,4 @@ kWidget.addReadyCallback(function (playerId) {
     });
 });
 
-})(kWidget);
+})(kWidget, jQuery);
